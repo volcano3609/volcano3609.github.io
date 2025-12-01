@@ -1,207 +1,304 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volcano3609 的主页</title>
+    <style>
+        :root {
+            --bg-color: #F7F7F5;   /* Notion 经典的米灰色背景 */
+            --card-bg: #FFFFFF;    /* 卡片纯白背景 */
+            --text-main: #37352f;
+            --text-gray: #787774;
+            --border-color: #E9E9E8;
+            --hover-bg: #EFEFEF;
+        }
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 80px;
+        }
 
-<meta name="generator" content="Hexo 8.1.1"></head>
+        /* 1. 顶部 Banner */
+        .banner {
+            height: 260px;
+            width: 100%;
+            /* 这里换一张你喜欢的风景图 */
+            background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center 40%;
+        }
 
+        /* 2. 主容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+        }
+
+        /* 3. 网站大标题 (模仿 Notion 页面标题) */
+        .page-header {
+            margin-top: -40px; /* 让图标浮在 Banner 上 */
+            margin-bottom: 40px;
+            padding-left: 10px;
+        }
+
+        .page-icon {
+            font-size: 4rem; /* 图标大一点 */
+            display: inline-block;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            /* 下面这两行是为了模拟文字下划线效果，不需要可以删掉 */
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+            display: block;
+            width: 100%;
+        }
+
+        /* 4. 双栏布局核心 */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr; /* 左侧固定300px，右侧撑满 */
+            gap: 40px; /* 左右间距 */
+        }
+
+        /* === 左侧栏 (分块设计) === */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* 卡片之间的间距 */
+        }
+
+        /* 侧边栏的白色卡片 */
+        .sidebar-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px; /* 圆角 */
+            padding: 16px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        /* 像图中那样的紫色小标题背景 */
+        .group-header {
+            font-size: 0.85rem;
+            color: #6940a5; /* 紫色字 */
+            background: #f3e8ff; /* 淡紫背景 */
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        /* 普通标题 */
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .link-list {
+            list-style: none;
+        }
+
+        .link-item a {
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            border-radius: 6px;
+            transition: background 0.2s;
+            margin-bottom: 2px;
+        }
+
+        .link-item a:hover {
+            background-color: var(--hover-bg);
+        }
+
+        .link-icon {
+            margin-right: 10px;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        /* === 右侧个人简介 === */
+        .profile-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .profile-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .profile-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .profile-content p {
+            margin-bottom: 15px;
+            color: #4a4a4a;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .highlight-box {
+            background: #e3f2fd; /* 蓝色高亮条 */
+            padding: 10px 15px;
+            border-radius: 6px;
+            color: #0c5460;
+            font-size: 0.95rem;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        /* 手机端适配 */
+        @media (max-width: 850px) {
+            .content-grid {
+                grid-template-columns: 1fr; /* 变成单栏 */
+            }
+            .banner { height: 180px; }
+            .page-title { font-size: 2rem; }
+            .profile-card { flex-direction: column; text-align: center; align-items: center; }
+        }
+    </style>
+</head>
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+
+    <!-- 顶部 Banner -->
+    <div class="banner"></div>
+
+    <div class="container">
+        
+        <!-- 页面大标题 -->
+        <header class="page-header">
+            <div class="page-icon">🌋</div> <!-- 这里可以换成图片 -->
+            <h1 class="page-title">Volcano3609 的主页</h1>
+        </header>
+
+        <!-- 布局：左侧导航 + 右侧简介 -->
+        <div class="content-grid">
+
+            <!-- === 左侧栏 (模仿图中的分块卡片) === -->
+            <aside class="sidebar">
+                
+                <!-- 卡片 1: 核心导航 -->
+                <div class="sidebar-card">
+                    <div class="group-header">🚀 核心导航</div>
+                    <ul class="link-list">
+                        <!-- 注意：这里的 /archives/ 是 Hexo 默认的文章列表页 -->
+                        <li class="link-item">
+                            <a href="/archives/">
+                                <span class="link-icon">📂</span> 所有文章 (Archives)
+                            </a>
+                        </li>
+                        <li class="link-item">
+                            <a href="#">
+                                <span class="link-icon">🧱</span> 项目合集
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 卡片 2: 知识库 (模仿 Notion/Obsidian 分类) -->
+                <div class="sidebar-card">
+                    <div class="card-title">📖 知识库</div>
+                    <ul class="link-list">
+                        <li class="link-item">
+                            <a href="#">
+                                <span class="link-icon">📝</span> 编程笔记
+                            </a>
+                        </li>
+                        <li class="link-item">
+                            <a href="#">
+                                <span class="link-icon">🧠</span> 思考随笔
+                            </a>
+                        </li>
+                        <li class="link-item">
+                            <a href="#">
+                                <span class="link-icon">🔧</span> 效率工具
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 卡片 3: 外部链接 -->
+                <div class="sidebar-card">
+                    <div class="card-title">🔗 外部链接</div>
+                    <ul class="link-list">
+                        <li class="link-item">
+                            <a href="https://github.com/volcano3609" target="_blank">
+                                <span class="link-icon">🐱</span> GitHub
+                            </a>
+                        </li>
+                        <li class="link-item">
+                            <a href="mailto:你的邮箱@xxx.com">
+                                <span class="link-icon">📧</span> 联系我
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </aside>
+
+            <!-- === 右侧主要内容 === -->
+            <main class="main-content">
+                <div class="profile-card">
+                    <img src="https://ui-avatars.com/api/?name=Volcano&background=random&size=256" alt="Avatar" class="profile-avatar">
+                    <div class="profile-content">
+                        <h2>Hi，我是 Volcano，欢迎来到我的主页。</h2>
+                        <p>
+                            爱折腾的 Web 全栈开发初学者，效率工具的狂热爱好者。
+                        </p>
+                        <p>
+                            持续分享 <strong>编程技术</strong> | <strong>生活随感</strong> | <strong>AI 探索</strong>。
+                        </p>
+                        
+                        <!-- 那个蓝色的提示条 -->
+                        <div class="highlight-box">
+                            ⬅️ 所有的博客文章和资源，都可以在左侧菜单找到。
+                        </div>
+
+                        <p style="margin-top: 25px; color: #888; font-size: 0.9rem;">
+                            有任何问题，或者想要实现什么功能，都可以给我留言。<br>
+                            全网同一ID：Volcano3609
+                        </p>
+                    </div>
+                </div>
+            </main>
+
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
 
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/12/01/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2025-12-01T15:41:36.709Z" itemprop="datePublished">2025-12-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/12/01/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/12/01/hello-world/" data-id="cuida6wWsW4RBaH_x4vF_vKg8" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">December 2025</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/12/01/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
 </body>
 </html>
