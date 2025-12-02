@@ -6,15 +6,15 @@
   
   <title>网站搭建笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="今天的天气真好">
+  <meta name="description" content="我是 CodeArchitect。这份文档不仅是一份教程，更是你从“代码小白”到“拥有独立网站”的全过程实战复盘。我将我们刚才经历的所有步骤、遇到的每一个报错坑、以及解决思路，都整理成了这份**《零基础 Hexo + GitHub Pages 个人博客搭建全攻略》**。建议收藏，或者打印下来，作为你日后维护博客的手册。📘 零基础 Hexo + GitHub Pages 个人博客搭建全攻略作者：C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网站搭建笔记">
 <meta property="og:url" content="http://example.com/2025/12/02/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="今天的天气真好">
+<meta property="og:description" content="我是 CodeArchitect。这份文档不仅是一份教程，更是你从“代码小白”到“拥有独立网站”的全过程实战复盘。我将我们刚才经历的所有步骤、遇到的每一个报错坑、以及解决思路，都整理成了这份**《零基础 Hexo + GitHub Pages 个人博客搭建全攻略》**。建议收藏，或者打印下来，作为你日后维护博客的手册。📘 零基础 Hexo + GitHub Pages 个人博客搭建全攻略作者：C">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-12-02T01:40:00.000Z">
-<meta property="article:modified_time" content="2025-12-02T01:51:41.597Z">
+<meta property="article:modified_time" content="2025-12-02T02:11:58.343Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -99,7 +99,29 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>今天的天气真好</p>
+        <p>我是 CodeArchitect。<br>这份文档不仅是一份教程，更是你从“代码小白”到“拥有独立网站”的全过程实战复盘。我将我们刚才经历的所有步骤、遇到的每一个报错坑、以及解决思路，都整理成了这份**《零基础 Hexo + GitHub Pages 个人博客搭建全攻略》**。<br>建议收藏，或者打印下来，作为你日后维护博客的手册。<br>📘 零基础 Hexo + GitHub Pages 个人博客搭建全攻略<br>作者：CodeArchitect &amp; Volcano3609<br>适用人群：完全不懂代码的初学者<br>核心目标：免费搭建一个高逼格、Notion 风格的个人网站，并托管在 GitHub 上。<br>📅 第一阶段：环境准备 (打地基)<br>在开始盖房子之前，我们需要准备好工具。</p>
+<ol>
+<li>安装核心软件<br>Node.js (Hexo 的运行引擎)：<br>下载官网 LTS 版本。<br>踩坑记录：如果版本太旧（如 v20.14），会导致后续报错 EBADENGINE。<br>解决方案：务必安装最新 LTS 版本（v20.19+ 或 v22+）。<br>Git (搬运工)：<br>去官网下载 Git for Windows，一路 Next 安装。</li>
+<li>注册 GitHub 仓库 (圈地)<br>仓库名规则（死命令）：必须是 你的用户名.github.io。<br>例如：你的用户名是 volcano3609，仓库名必须是 volcano3609.github.io。<br>设置：选择 Public (公开)。<br>🛠️ 第二阶段：本地搭建 (盖房子)<br>我们将使用 Hexo 框架在你的电脑上生成博客文件。</li>
+<li>初始化 Hexo<br>在你的电脑上新建文件夹（如 My website），右键打开 Git Bash。<br>执行命令：<br>code<br>Bash<br>npx hexo init<br>为什么用 npx？：<br>小白痛点：直接输 hexo 会报错 command not found，因为环境变量没配好。<br>架构师解法：npx 是 Node.js 自带的神器，它能自动找到 hexo 运行，免去配置环境变量的烦恼。</li>
+<li>安装依赖<br>初始化完成后，执行：<br>code<br>Bash<br>npm install<br>这步是安装 Hexo 需要的各种插件（相当于买家具）。</li>
+<li>本地预览<br>code<br>Bash<br>npx hexo s<br>打开浏览器访问 <a href="http://localhost:4000。如果有画面，说明本地搭建成功。">http://localhost:4000。如果有画面，说明本地搭建成功。</a><br>🚀 第三阶段：发布上线 (通水电)<br>要把电脑里的博客推送到 GitHub 让全世界看到。</li>
+<li>获取 GitHub Token (钥匙)<br>GitHub 网页 -&gt; Settings -&gt; Developer settings -&gt; Personal access tokens (Classic)。<br>权限：勾选 repo 这一项。<br>保存：复制那个 ghp_ 开头的字符串，只显示一次！</li>
+<li>配置 _config.yml (身份证)<br>用记事本打开根目录下的 _config.yml，修改底部的 deploy 部分：<br>code<br>Yaml<br>deploy:<br>  type: git<br>  repo: <a target="_blank" rel="noopener" href="https://github.com/volcano3609/volcano3609.github.io.git">https://github.com/volcano3609/volcano3609.github.io.git</a><br>  branch: main</li>
+<li>安装部署插件<br>在 Git Bash 执行：<br>code<br>Bash<br>npm install hexo-deployer-git –save</li>
+<li>首次部署与身份验证 (最容易报错的一步)<br>执行发布命令：<br>code<br>Bash<br>npx hexo g -d<br>🛑 常见报错与解决：<br>报错：Author identity unknown<br>原因：Git 不知道你是谁。<br>解决：<br>code<br>Bash<br>git config –global user.name “你的GitHub用户名”<br>git config –global user.email “你的注册邮箱”<br>报错：Recv failure: Connection was reset<br>原因：网络问题，连接 GitHub 失败。<br>解决：<br>多试几次。<br>或者设置 Git 缓存：git config –global http.postBuffer 524288000。<br>实在不行用手机热点。<br>🎨 第四阶段：装修主页 (Notion 风格)<br>Hexo 默认的主页是文章列表，我们要把它改成高大上的个人主页。</li>
+<li>腾出首页位置<br>Hexo 默认霸占了首页。我们需要把文章列表赶到 &#x2F;blog 目录下。<br>操作：修改 _config.yml，添加或修改以下内容：<br>code<br>Yaml<br>index_generator:<br>  path: blog<br>  per_page: 10<br>  order_by: -date</li>
+<li>植入自定义主页<br>操作：在 source 文件夹下，新建 index.html。<br>内容：复制我们设计好的 HTML 代码（Notion 风格、双栏布局）。<br>关键点：文件头必须包含 layout: false，防止 Hexo 破坏我们的设计。</li>
+<li>应用更改<br>因为修改了核心配置，必须执行**“三连击”**：<br>code<br>Bash<br>npx hexo clean   # 清除缓存 (这一步不做，配置可能不生效)<br>npx hexo g       # 重新生成<br>npx hexo d       # 发布<br>✍️ 第五阶段：日常写作与维护 (入住)<br>这是你以后每天要重复的工作流。</li>
+<li>新建文章<br>code<br>Bash<br>npx hexo new “文章标题”<br>或者直接复制 source&#x2F;_posts&#x2F; 里的 .md 文件并重命名。</li>
+<li>设置文章分类 (关键)<br>打开 .md 文件，在顶部的“文章头”里加上 categories：<br>code<br>Yaml</li>
+</ol>
+<hr>
+<h2 id="title-网站搭建笔记date-2025-12-02-10-00-00categories-网站搭建"><a href="#title-网站搭建笔记date-2025-12-02-10-00-00categories-网站搭建" class="headerlink" title="title: 网站搭建笔记date: 2025-12-02 10:00:00categories: 网站搭建  &lt;– 这一行决定了分类"></a>title: 网站搭建笔记<br>date: 2025-12-02 10:00:00<br>categories: 网站搭建  &lt;– 这一行决定了分类</h2><ol start="3">
+<li>获取分类链接<br>Hexo 会自动生成分类页面，链接规律是固定的：<br>公式：&#x2F;categories&#x2F;你的分类名&#x2F;<br>例如：&#x2F;categories&#x2F;网站搭建&#x2F;</li>
+<li>修改主页导航链接<br>用记事本打开 source&#x2F;index.html，找到对应的按钮，把 href 改成上面的链接：<br>code<br>Html</li>
+</ol>
+<p><a href="/categories/网站搭建/">网站搭建</a><br>❓ 常见问题急救手册 (FAQ)<br>Q1: 我发布成功了 (Deploy done)，但网页没变化？<br>原因 A：浏览器缓存。<br>解决：按 Ctrl + F5 强制刷新，或者用手机流量访问。<br>原因 B：GitHub 服务器延迟。<br>解决：等 2-5 分钟。<br>Q2: 点击左侧导航栏，显示 404？<br>原因：你写了分类，但还没发布；或者链接填错了。<br>解决：<br>确保 .md 文件里写了 categories: xxx。<br>确保执行了 npx hexo g -d。<br>链接地址必须是 &#x2F;categories&#x2F;xxx&#x2F; (注意前后斜杠)。<br>Q3: 记事本修改代码要注意什么？<br>后缀名陷阱：确保文件叫 index.html，而不是 index.html.txt。请在文件夹视图里开启“显示文件扩展名”。<br>编码：记事本默认是 UTF-8，通常没问题。</p>
 
       
     </div>
